@@ -15,6 +15,7 @@ public class TestCours {
 
     @Before
     public void setUp() throws Exception {
+        String s = System.setProperty("webdriver.gecko.driver", "C:\\Driver_chrome\\geckodriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "https://www.google.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
