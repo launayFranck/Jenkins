@@ -4,7 +4,6 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -16,8 +15,8 @@ public class TestCours {
 
     @Before
     public void setUp() throws Exception {
-        String s = System.setProperty("webdriver.chrome.driver", "C:\\Driver_chrome\\chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+        baseUrl = "https://www.google.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -26,9 +25,9 @@ public class TestCours {
         driver.get("https://www.ebay.fr/");
         driver.findElement(By.linkText("Marques")).click();
         driver.findElement(By.linkText("ACIS")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Objets de la Galerie'])[1]/following::h3[1]")).click();
+        driver.findElement(By.xpath("//li[@id='w7-items[0]']/div/div[2]/a/h3")).click();
         try {
-            assertEquals("Oui", driver.findElement(By.xpath("//*[@id=\"viTabs_0_is\"]/div/table/tbody/tr[3]/td[2]/span")).getText());
+            assertEquals("Classique", driver.findElement(By.xpath("//div[@id='viTabs_0_is']/div/table/tbody/tr[2]/td[4]/span")).getText());
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
