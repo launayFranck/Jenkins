@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -15,9 +16,8 @@ public class TestCours {
 
     @Before
     public void setUp() throws Exception {
-        String s = System.setProperty("webdriver.gecko.driver", "C:\\Driver_chrome\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        baseUrl = "https://www.google.com/";
+        String s = System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
